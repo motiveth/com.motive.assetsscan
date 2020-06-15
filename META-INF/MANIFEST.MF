@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Assets_Scan
+Bundle-SymbolicName: com.motive.assetsscan;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: Assets_Scan
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.adempiere.base;bundle-version="7.1.0",
+ org.adempiere.plugin.utils;bundle-version="7.1.0"
+Service-Component: OSGI-INF/AssetsScanProcessFactory.xml
