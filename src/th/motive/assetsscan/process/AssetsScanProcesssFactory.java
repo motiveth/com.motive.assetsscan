@@ -1,4 +1,4 @@
-package com.motive.assetsscan.process;
+package th.motive.assetsscan.process;
 
 import org.adempiere.base.IProcessFactory;
 import org.compiere.process.ProcessCall;

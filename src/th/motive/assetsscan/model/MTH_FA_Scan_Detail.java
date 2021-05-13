@@ -1,4 +1,4 @@
-package com.motive.assetsscan.model;
+package th.motive.assetsscan.model;
 
 import java.math.BigDecimal;
 import java.util.Properties;

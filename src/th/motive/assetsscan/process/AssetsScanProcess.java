@@ -1,4 +1,4 @@
-package com.motive.assetsscan.process;
+package th.motive.assetsscan.process;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,8 +13,8 @@ import org.compiere.process.ProcessInfoParameter;
 import org.compiere.process.SvrProcess;
 import org.compiere.util.DB;
 
-import com.motive.assetsscan.model.MTH_FA_Scan_Detail;
-import com.motive.assetsscan.model.X_TH_FA_Scan_Detail;
+import th.motive.assetsscan.model.MTH_FA_Scan_Detail;
+import th.motive.assetsscan.model.X_TH_FA_Scan_Detail;
 
 public class AssetsScanProcess extends SvrProcess {
 

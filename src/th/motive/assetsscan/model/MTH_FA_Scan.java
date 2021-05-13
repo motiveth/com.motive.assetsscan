@@ -1,4 +1,4 @@
-package com.motive.assetsscan.model;
+package th.motive.assetsscan.model;
 
 import java.util.Properties;
 
