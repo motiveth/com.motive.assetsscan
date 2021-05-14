@@ -7,7 +7,6 @@ public class AssetsScanProcesssFactory implements IProcessFactory {
 
 	@Override
 	public ProcessCall newProcessInstance(String className) {
-		// TODO Auto-generated method stub
 		if (className.equalsIgnoreCase("AssetsScanProcess"))
 			return new AssetsScanProcess();
 		return null;

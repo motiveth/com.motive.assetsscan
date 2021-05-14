@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Assets scan
-Bundle-SymbolicName: th.motive.assetsscan;singleton:=true
+Bundle-SymbolicName: th.motive.assetsscan
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: MOTIVE
 Require-Bundle: org.adempiere.base;bundle-version="7.1.0",
