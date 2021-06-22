@@ -1,9 +1,13 @@
 package th.motive.assetsscan.process;
 
 import java.util.List;
+import java.util.logging.Level;
+
+import org.compiere.model.I_AD_Sequence;
 import org.compiere.model.I_A_Asset;
 import org.compiere.model.MAsset;
 import org.compiere.model.Query;
+import org.compiere.process.ProcessInfoParameter;
 import org.compiere.process.SvrProcess;
 import org.compiere.util.DB;
 
@@ -11,9 +15,18 @@ import th.motive.assetsscan.model.X_TH_FA_Scan;
 import th.motive.assetsscan.model.X_TH_FA_Scan_Detail;
 
 public class AssetsScanProcess extends SvrProcess {	
+	boolean isOrgLevel = false;
 	
 	@Override
 	protected void prepare() {
+		ProcessInfoParameter[] para = getParameter();
+		for (ProcessInfoParameter element : para){
+			String name = element.getParameterName();
+			if (I_AD_Sequence.COLUMNNAME_IsOrgLevelSequence.equals(name))
+				isOrgLevel = element.getParameterAsBoolean();
+			else
+				if (log.isLoggable(Level.INFO))log.log(Level.INFO, "Unknown Parameter: " + name);
+		}
 	}
 
 	@Override
@@ -27,7 +40,15 @@ public class AssetsScanProcess extends SvrProcess {
 		
 		DB.executeUpdate(sqlD.toString(), get_TrxName());
 
-		Query assetQuery = new Query(getCtx(), I_A_Asset.Table_Name, I_A_Asset.COLUMNNAME_M_Locator_ID + " = " + scanHeader.getM_Locator_ID(), null);
+		Query assetQuery = null;
+		
+		if (isOrgLevel) {
+			assetQuery = new Query(getCtx(), I_A_Asset.Table_Name, I_A_Asset.COLUMNNAME_AD_Org_ID + " = " + scanHeader.getAD_Org_ID(), null);
+		}else {// locator level
+			assetQuery = new Query(getCtx(), I_A_Asset.Table_Name, I_A_Asset.COLUMNNAME_M_Locator_ID + " = " + scanHeader.getM_Locator_ID(), null);
+		}
+		
+		
 		List<MAsset> assets = assetQuery.list();
 			
 		for (MAsset asset : assets) {
