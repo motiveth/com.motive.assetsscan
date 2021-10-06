@@ -14,7 +14,12 @@ import org.compiere.util.DB;
 import th.motive.assetsscan.model.X_TH_FA_Scan;
 import th.motive.assetsscan.model.X_TH_FA_Scan_Detail;
 
-public class AssetsScanProcess extends SvrProcess {	
+/**
+ * booking scan
+ * @author hieplq
+ *
+ */
+public class AssetBookingScan extends SvrProcess {	
 	boolean isOrgLevel = false;
 	
 	@Override

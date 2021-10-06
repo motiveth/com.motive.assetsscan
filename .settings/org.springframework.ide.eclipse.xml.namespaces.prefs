@@ -1,0 +1,7 @@
+//org.springframework.ide.eclipse.xml.namespaces.default.version.http\://activemq.apache.org/schema/core=
+//org.springframework.ide.eclipse.xml.namespaces.prefix.http\://activemq.apache.org/schema/core=core
+eclipse.preferences.version=1
+org.springframework.ide.eclipse.xml.namespaces.default.version.check.classpath=true
+org.springframework.ide.eclipse.xml.namespaces.enable.project.preferences=false
+org.springframework.ide.eclipse.xml.namespaces.loadNamespaceHandlerFromClasspath=true
+org.springframework.ide.eclipse.xml.namespaces.use.https.for.new.namespace.locations=false

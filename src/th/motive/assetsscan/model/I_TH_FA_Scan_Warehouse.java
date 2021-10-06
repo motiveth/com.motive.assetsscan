@@ -21,18 +21,18 @@ import java.sql.Timestamp;
 import org.compiere.model.*;
 import org.compiere.util.KeyNamePair;
 
-/** Generated Interface for TH_FA_Scan
+/** Generated Interface for TH_FA_Scan_Warehouse
  *  @author iDempiere (generated) 
  *  @version Release 8.2
  */
 @SuppressWarnings("all")
-public interface I_TH_FA_Scan 
+public interface I_TH_FA_Scan_Warehouse 
 {
 
-    /** TableName=TH_FA_Scan */
-    public static final String Table_Name = "TH_FA_Scan";
+    /** TableName=TH_FA_Scan_Warehouse */
+    public static final String Table_Name = "TH_FA_Scan_Warehouse";
 
-    /** AD_Table_ID=1000001 */
+    /** AD_Table_ID=1000006 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -80,71 +80,6 @@ public interface I_TH_FA_Scan
 	  */
 	public int getCreatedBy();
 
-    /** Column name DateDoc */
-    public static final String COLUMNNAME_DateDoc = "DateDoc";
-
-	/** Set Document Date.
-	  * Date of the Document
-	  */
-	public void setDateDoc (Timestamp DateDoc);
-
-	/** Get Document Date.
-	  * Date of the Document
-	  */
-	public Timestamp getDateDoc();
-
-    /** Column name Description */
-    public static final String COLUMNNAME_Description = "Description";
-
-	/** Set Description.
-	  * Optional short description of the record
-	  */
-	public void setDescription (String Description);
-
-	/** Get Description.
-	  * Optional short description of the record
-	  */
-	public String getDescription();
-
-    /** Column name DocStatus */
-    public static final String COLUMNNAME_DocStatus = "DocStatus";
-
-	/** Set Document Status.
-	  * The current status of the document
-	  */
-	public void setDocStatus (String DocStatus);
-
-	/** Get Document Status.
-	  * The current status of the document
-	  */
-	public String getDocStatus();
-
-    /** Column name DocumentNo */
-    public static final String COLUMNNAME_DocumentNo = "DocumentNo";
-
-	/** Set Document No.
-	  * Document sequence number of the document
-	  */
-	public void setDocumentNo (String DocumentNo);
-
-	/** Get Document No.
-	  * Document sequence number of the document
-	  */
-	public String getDocumentNo();
-
-    /** Column name GenerateList */
-    public static final String COLUMNNAME_GenerateList = "GenerateList";
-
-	/** Set Generate List.
-	  * Generate List
-	  */
-	public void setGenerateList (String GenerateList);
-
-	/** Get Generate List.
-	  * Generate List
-	  */
-	public String getGenerateList();
-
     /** Column name IsActive */
     public static final String COLUMNNAME_IsActive = "IsActive";
 
@@ -173,6 +108,19 @@ public interface I_TH_FA_Scan
 
 	public I_M_Locator getM_Locator() throws RuntimeException;
 
+    /** Column name Qty */
+    public static final String COLUMNNAME_Qty = "Qty";
+
+	/** Set Quantity.
+	  * Quantity
+	  */
+	public void setQty (BigDecimal Qty);
+
+	/** Get Quantity.
+	  * Quantity
+	  */
+	public BigDecimal getQty();
+
     /** Column name TH_FA_Scan_ID */
     public static final String COLUMNNAME_TH_FA_Scan_ID = "TH_FA_Scan_ID";
 
@@ -182,32 +130,25 @@ public interface I_TH_FA_Scan
 	/** Get FA_Scan	  */
 	public int getTH_FA_Scan_ID();
 
-    /** Column name TH_FA_Scan_UU */
-    public static final String COLUMNNAME_TH_FA_Scan_UU = "TH_FA_Scan_UU";
+	public I_TH_FA_Scan getTH_FA_Scan() throws RuntimeException;
 
-	/** Set TH_FA_Scan_UU	  */
-	public void setTH_FA_Scan_UU (String TH_FA_Scan_UU);
-
-	/** Get TH_FA_Scan_UU	  */
-	public String getTH_FA_Scan_UU();
-
-    /** Column name TH_FA_Scan_Warehouse */
-    public static final String COLUMNNAME_TH_FA_Scan_Warehouse = "TH_FA_Scan_Warehouse";
+    /** Column name TH_FA_Scan_Warehouse_ID */
+    public static final String COLUMNNAME_TH_FA_Scan_Warehouse_ID = "TH_FA_Scan_Warehouse_ID";
 
 	/** Set Scan Warehouse	  */
-	public void setTH_FA_Scan_Warehouse (String TH_FA_Scan_Warehouse);
+	public void setTH_FA_Scan_Warehouse_ID (int TH_FA_Scan_Warehouse_ID);
 
 	/** Get Scan Warehouse	  */
-	public String getTH_FA_Scan_Warehouse();
+	public int getTH_FA_Scan_Warehouse_ID();
 
-    /** Column name TH_FA_ScannedBy */
-    public static final String COLUMNNAME_TH_FA_ScannedBy = "TH_FA_ScannedBy";
+    /** Column name TH_FA_Scan_Warehouse_UU */
+    public static final String COLUMNNAME_TH_FA_Scan_Warehouse_UU = "TH_FA_Scan_Warehouse_UU";
 
-	/** Set Scanned By	  */
-	public void setTH_FA_ScannedBy (String TH_FA_ScannedBy);
+	/** Set Scan Warehouse UU	  */
+	public void setTH_FA_Scan_Warehouse_UU (String TH_FA_Scan_Warehouse_UU);
 
-	/** Get Scanned By	  */
-	public String getTH_FA_ScannedBy();
+	/** Get Scan Warehouse UU	  */
+	public String getTH_FA_Scan_Warehouse_UU();
 
     /** Column name Updated */
     public static final String COLUMNNAME_Updated = "Updated";
@@ -224,4 +165,17 @@ public interface I_TH_FA_Scan
 	  * User who updated this records
 	  */
 	public int getUpdatedBy();
+
+    /** Column name Value */
+    public static final String COLUMNNAME_Value = "Value";
+
+	/** Set Search Key.
+	  * Search key for the record in the format required - must be unique
+	  */
+	public void setValue (String Value);
+
+	/** Get Search Key.
+	  * Search key for the record in the format required - must be unique
+	  */
+	public String getValue();
 }

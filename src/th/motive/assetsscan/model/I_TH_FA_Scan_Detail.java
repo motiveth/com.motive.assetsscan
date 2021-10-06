@@ -23,7 +23,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for TH_FA_Scan_Detail
  *  @author iDempiere (generated) 
- *  @version Release 7.1
+ *  @version Release 8.2
  */
 @SuppressWarnings("all")
 public interface I_TH_FA_Scan_Detail 
@@ -32,14 +32,14 @@ public interface I_TH_FA_Scan_Detail
     /** TableName=TH_FA_Scan_Detail */
     public static final String Table_Name = "TH_FA_Scan_Detail";
 
-    /** AD_Table_ID=1000003 */
+    /** AD_Table_ID=1000002 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
 
-    /** AccessLevel = 1 - Org 
+    /** AccessLevel = 3 - Client - Org 
      */
-    BigDecimal accessLevel = BigDecimal.valueOf(1);
+    BigDecimal accessLevel = BigDecimal.valueOf(3);
 
     /** Load Meta Data */
 

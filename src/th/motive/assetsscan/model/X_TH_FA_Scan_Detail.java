@@ -27,14 +27,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for TH_FA_Scan_Detail
  *  @author iDempiere (generated) 
- *  @version Release 7.1 - $Id$ */
+ *  @version Release 8.2 - $Id$ */
 public class X_TH_FA_Scan_Detail extends PO implements I_TH_FA_Scan_Detail, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20200611L;
+	private static final long serialVersionUID = 20210926L;
 
     /** Standard Constructor */
     public X_TH_FA_Scan_Detail (Properties ctx, int TH_FA_Scan_Detail_ID, String trxName)
@@ -54,7 +54,7 @@ public class X_TH_FA_Scan_Detail extends PO implements I_TH_FA_Scan_Detail, I_Pe
     }
 
     /** AccessLevel
-      * @return 1 - Org 
+      * @return 3 - Client - Org 
       */
     protected int get_AccessLevel()
     {
@@ -196,10 +196,10 @@ public class X_TH_FA_Scan_Detail extends PO implements I_TH_FA_Scan_Detail, I_Pe
 		return (String)get_Value(COLUMNNAME_SerNo);
 	}
 
-	/** Normal = Normal */
-	public static final String TH_FA_PHYSICAL_STATUS_Normal = "Normal";
 	/** Missing = Missing */
 	public static final String TH_FA_PHYSICAL_STATUS_Missing = "Missing";
+	/** Normal = Normal */
+	public static final String TH_FA_PHYSICAL_STATUS_Normal = "Normal";
 	/** damage = damage */
 	public static final String TH_FA_PHYSICAL_STATUS_Damage = "damage";
 	/** keep in another location = keep in another location */
