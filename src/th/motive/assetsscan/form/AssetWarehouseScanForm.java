@@ -16,6 +16,7 @@ import org.adempiere.webui.component.Textbox;
 import org.adempiere.webui.editor.WEditor;
 import org.adempiere.webui.editor.WebEditorFactory;
 import org.adempiere.webui.panel.ADForm;
+import org.adempiere.webui.session.SessionManager;
 import org.compiere.model.GridField;
 import org.compiere.model.GridFieldVO;
 import org.compiere.model.MTable;
@@ -23,11 +24,14 @@ import org.compiere.model.MValRule;
 import org.compiere.util.DisplayType;
 import org.compiere.util.Env;
 import org.compiere.util.Msg;
+import org.zkforge.keylistener.Keylistener;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.HtmlBasedComponent;
+import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.event.InputEvent;
+import org.zkoss.zk.ui.event.KeyEvent;
 import org.zkoss.zul.Div;
 
 import th.motive.assetsscan.model.I_TH_FA_Scan;
@@ -163,9 +167,40 @@ public class AssetWarehouseScanForm extends ADForm{
 		lbQty = new Label();
 		lbQty.setValue("0");
 		addLabel(row, lbQty);
-
 	}
 
+	Keylistener keyListener;
+	
+	@Override
+	public void onPageAttached(Page newpage, Page oldpage) {
+		super.onPageAttached(newpage, oldpage);
+		Keylistener keyListener = SessionManager.getSessionApplication().getKeylistener();
+		keyListener.addEventListener(Events.ON_CTRL_KEY, this);
+	}
+	
+	@Override
+	public void onPageDetached(Page page) {
+		super.onPageDetached(page);
+		if (keyListener != null) {
+			keyListener.removeEventListener(Events.ON_CTRL_KEY, this);
+		}
+	}
+	
+	@Override
+	public void onEvent(Event event) throws Exception {
+		if (Events.ON_CTRL_KEY.equals(event.getName())) {
+    		KeyEvent keyEvent = (KeyEvent) event;
+    		//enter == 13
+    		if (keyEvent.getKeyCode() == 13) {
+    			barcodeScan(txtBarcode.getText());
+    			keyEvent.stopPropagation();
+    			return;
+    		}
+    	}
+		
+		super.onEvent(event);
+	}
+	
 	void newRow(Rows rows) {
 		Row row = new Row();
 		rows.appendChild(row);
@@ -198,6 +233,9 @@ public class AssetWarehouseScanForm extends ADForm{
 	}
 
 	private void barcodeScan(String inputText){
+		if (inputText.trim().length() == 0)
+			return;
+		
 		int orgId = 0;
 		int locatorId = 0;
 
