@@ -131,8 +131,8 @@ public class AssetWarehouseScanForm extends ADForm{
 				DisplayType.Locator,
 				0, false, false, null);
 
-		int validateLocatorOrgId = 52087;// M_Locator of Org
-		voF.ValidationCode = MValRule.get(Env.getCtx(), validateLocatorOrgId).getCode();
+		//int validateLocatorOrgId = 52087;// M_Locator of Org
+		//voF.ValidationCode = MValRule.get(Env.getCtx(), validateLocatorOrgId).getCode();
 		//don't need re-create because it will use ValidationCode on DefaultLookupFactory.getLookup on case Locator
 		mFieldLocator = new GridField(voF);
 		editorLocator = WebEditorFactory.getEditor(mFieldLocator, false);
