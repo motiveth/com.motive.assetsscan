@@ -66,13 +66,9 @@ public class AssetBookingScan extends SvrProcess {
 	private void insertDetail(MAsset asset, X_TH_FA_Scan scanHeader) {
 		X_TH_FA_Scan_Detail scanDetail = new X_TH_FA_Scan_Detail(getCtx(), 0, get_TrxName());
 		scanDetail.setAD_Org_ID(asset.getAD_Org_ID());
-		scanDetail.setC_BPartner_ID(asset.getC_BPartner_ID());
-		scanDetail.setDescription(asset.getDescription());
 		scanDetail.setIsActive(asset.isActive());
 		scanDetail.setM_Locator_ID(asset.getM_Locator_ID());
-		scanDetail.setName(asset.getName());
-		scanDetail.setSerNo(asset.getSerNo());
-		scanDetail.setValue(asset.getValue());
+		scanDetail.setA_Asset_ID(asset.getA_Asset_ID());
 		scanDetail.setTH_FA_Scan_ID(scanHeader.getTH_FA_Scan_ID());
 		scanDetail.saveEx();
 	}

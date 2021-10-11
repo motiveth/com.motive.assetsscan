@@ -32,7 +32,7 @@ public class X_TH_FA_Scan_Warehouse extends PO implements I_TH_FA_Scan_Warehouse
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20211006L;
+	private static final long serialVersionUID = 20211011L;
 
     /** Standard Constructor */
     public X_TH_FA_Scan_Warehouse (Properties ctx, int TH_FA_Scan_Warehouse_ID, String trxName)
@@ -71,6 +71,34 @@ public class X_TH_FA_Scan_Warehouse extends PO implements I_TH_FA_Scan_Warehouse
       return sb.toString();
     }
 
+	public org.compiere.model.I_A_Asset getA_Asset() throws RuntimeException
+    {
+		return (org.compiere.model.I_A_Asset)MTable.get(getCtx(), org.compiere.model.I_A_Asset.Table_Name)
+			.getPO(getA_Asset_ID(), get_TrxName());	}
+
+	/** Set Asset.
+		@param A_Asset_ID 
+		Asset used internally or by customers
+	  */
+	public void setA_Asset_ID (int A_Asset_ID)
+	{
+		if (A_Asset_ID < 1) 
+			set_Value (COLUMNNAME_A_Asset_ID, null);
+		else 
+			set_Value (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
+	}
+
+	/** Get Asset.
+		@return Asset used internally or by customers
+	  */
+	public int getA_Asset_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_A_Asset_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
 	public I_M_Locator getM_Locator() throws RuntimeException
     {
 		return (I_M_Locator)MTable.get(getCtx(), I_M_Locator.Table_Name)
@@ -97,6 +125,30 @@ public class X_TH_FA_Scan_Warehouse extends PO implements I_TH_FA_Scan_Warehouse
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
+	}
+
+	/** Set Processed.
+		@param Processed 
+		The document has been processed
+	  */
+	public void setProcessed (boolean Processed)
+	{
+		set_Value (COLUMNNAME_Processed, Boolean.valueOf(Processed));
+	}
+
+	/** Get Processed.
+		@return The document has been processed
+	  */
+	public boolean isProcessed () 
+	{
+		Object oo = get_Value(COLUMNNAME_Processed);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
 	}
 
 	/** Set Quantity.
@@ -176,22 +228,5 @@ public class X_TH_FA_Scan_Warehouse extends PO implements I_TH_FA_Scan_Warehouse
 	public String getTH_FA_Scan_Warehouse_UU () 
 	{
 		return (String)get_Value(COLUMNNAME_TH_FA_Scan_Warehouse_UU);
-	}
-
-	/** Set Search Key.
-		@param Value 
-		Search key for the record in the format required - must be unique
-	  */
-	public void setValue (String Value)
-	{
-		set_Value (COLUMNNAME_Value, Value);
-	}
-
-	/** Get Search Key.
-		@return Search key for the record in the format required - must be unique
-	  */
-	public String getValue () 
-	{
-		return (String)get_Value(COLUMNNAME_Value);
 	}
 }

@@ -64,20 +64,20 @@ public interface I_TH_FA_Scan_Detail
 	  */
 	public int getAD_Org_ID();
 
-    /** Column name C_BPartner_ID */
-    public static final String COLUMNNAME_C_BPartner_ID = "C_BPartner_ID";
+    /** Column name A_Asset_ID */
+    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
 
-	/** Set Business Partner .
-	  * Identifies a Business Partner
+	/** Set Asset.
+	  * Asset used internally or by customers
 	  */
-	public void setC_BPartner_ID (int C_BPartner_ID);
+	public void setA_Asset_ID (int A_Asset_ID);
 
-	/** Get Business Partner .
-	  * Identifies a Business Partner
+	/** Get Asset.
+	  * Asset used internally or by customers
 	  */
-	public int getC_BPartner_ID();
+	public int getA_Asset_ID();
 
-	public org.compiere.model.I_C_BPartner getC_BPartner() throws RuntimeException;
+	public org.compiere.model.I_A_Asset getA_Asset() throws RuntimeException;
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -94,19 +94,6 @@ public interface I_TH_FA_Scan_Detail
 	  * User who created this records
 	  */
 	public int getCreatedBy();
-
-    /** Column name Description */
-    public static final String COLUMNNAME_Description = "Description";
-
-	/** Set Description.
-	  * Optional short description of the record
-	  */
-	public void setDescription (String Description);
-
-	/** Get Description.
-	  * Optional short description of the record
-	  */
-	public String getDescription();
 
     /** Column name IsActive */
     public static final String COLUMNNAME_IsActive = "IsActive";
@@ -136,19 +123,6 @@ public interface I_TH_FA_Scan_Detail
 
 	public I_M_Locator getM_Locator() throws RuntimeException;
 
-    /** Column name Name */
-    public static final String COLUMNNAME_Name = "Name";
-
-	/** Set Name.
-	  * Alphanumeric identifier of the entity
-	  */
-	public void setName (String Name);
-
-	/** Get Name.
-	  * Alphanumeric identifier of the entity
-	  */
-	public String getName();
-
     /** Column name ScanDate */
     public static final String COLUMNNAME_ScanDate = "ScanDate";
 
@@ -157,19 +131,6 @@ public interface I_TH_FA_Scan_Detail
 
 	/** Get Scan Date 	  */
 	public Timestamp getScanDate();
-
-    /** Column name SerNo */
-    public static final String COLUMNNAME_SerNo = "SerNo";
-
-	/** Set Serial No.
-	  * Product Serial Number 
-	  */
-	public void setSerNo (String SerNo);
-
-	/** Get Serial No.
-	  * Product Serial Number 
-	  */
-	public String getSerNo();
 
     /** Column name TH_FA_Physical_Status */
     public static final String COLUMNNAME_TH_FA_Physical_Status = "TH_FA_Physical_Status";
@@ -244,17 +205,4 @@ public interface I_TH_FA_Scan_Detail
 	  * User who updated this records
 	  */
 	public int getUpdatedBy();
-
-    /** Column name Value */
-    public static final String COLUMNNAME_Value = "Value";
-
-	/** Set Search Key.
-	  * Search key for the record in the format required - must be unique
-	  */
-	public void setValue (String Value);
-
-	/** Get Search Key.
-	  * Search key for the record in the format required - must be unique
-	  */
-	public String getValue();
 }

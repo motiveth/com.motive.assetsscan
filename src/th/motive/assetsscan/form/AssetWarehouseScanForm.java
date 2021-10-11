@@ -3,6 +3,7 @@ package th.motive.assetsscan.form;
 import java.math.BigDecimal;
 
 import org.adempiere.exceptions.AdempiereException;
+import org.adempiere.util.Callback;
 import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.component.Button;
 import org.adempiere.webui.component.Column;
@@ -17,10 +18,13 @@ import org.adempiere.webui.editor.WEditor;
 import org.adempiere.webui.editor.WebEditorFactory;
 import org.adempiere.webui.panel.ADForm;
 import org.adempiere.webui.session.SessionManager;
+import org.adempiere.webui.window.FDialog;
 import org.compiere.model.GridField;
 import org.compiere.model.GridFieldVO;
+import org.compiere.model.MAsset;
 import org.compiere.model.MTable;
 import org.compiere.model.MValRule;
+import org.compiere.model.Query;
 import org.compiere.util.DisplayType;
 import org.compiere.util.Env;
 import org.compiere.util.Msg;
@@ -236,6 +240,17 @@ public class AssetWarehouseScanForm extends ADForm{
 		if (inputText.trim().length() == 0)
 			return;
 		
+		MAsset inputAsset = new Query(Env.getCtx(), MAsset.Table_Name, String.format(" %s = ?", MAsset.COLUMNNAME_Value), null).
+								setParameters(inputText).firstOnly();
+		
+		if (inputAsset == null) {
+			FDialog.error(getWindowNo(), this, null, "Not exists asset",  result -> {
+					txtBarcode.focus(); 
+					txtBarcode.setText(null);
+				});
+			return;
+		}
+		
 		int orgId = 0;
 		int locatorId = 0;
 
@@ -255,11 +270,11 @@ public class AssetWarehouseScanForm extends ADForm{
 
 		String queryOldScanWarehouse = String.format("%s = ? AND %s = ? AND %s = ? AND %s = ? ", 
 				I_TH_FA_Scan_Warehouse.COLUMNNAME_TH_FA_Scan_ID, I_TH_FA_Scan_Warehouse.COLUMNNAME_AD_Org_ID,
-				I_TH_FA_Scan_Warehouse.COLUMNNAME_M_Locator_ID, I_TH_FA_Scan_Warehouse.COLUMNNAME_Value);
+				I_TH_FA_Scan_Warehouse.COLUMNNAME_M_Locator_ID, I_TH_FA_Scan_Warehouse.COLUMNNAME_A_Asset_ID);
 
 		X_TH_FA_Scan_Warehouse scanWarehouse = (X_TH_FA_Scan_Warehouse)tbScanWarehouse.getPO(
 				queryOldScanWarehouse,
-				new Object[] {faScan.getTH_FA_Scan_ID(), orgId, locatorId, inputText},
+				new Object[] {faScan.getTH_FA_Scan_ID(), orgId, locatorId, inputAsset.getA_Asset_ID()},
 				null);
 
 		if (scanWarehouse == null) {
@@ -268,13 +283,14 @@ public class AssetWarehouseScanForm extends ADForm{
 			scanWarehouse.setAD_Org_ID(orgId);
 			scanWarehouse.setM_Locator_ID(locatorId);
 			scanWarehouse.setQty(BigDecimal.ZERO);
-			scanWarehouse.setValue(inputText);
+			scanWarehouse.setA_Asset_ID(inputAsset.getA_Asset_ID());
 		}
 
 		scanWarehouse.setQty(scanWarehouse.getQty().add(BigDecimal.ONE));
 		scanWarehouse.saveEx();
 
 		lbQty.setText(String.valueOf(scanWarehouse.getQty().intValue()));
+		txtBarcode.setText(null);
 		txtBarcode.focus();
 
 	}
