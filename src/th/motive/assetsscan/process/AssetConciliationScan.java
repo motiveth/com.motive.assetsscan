@@ -78,7 +78,7 @@ public class AssetConciliationScan extends SvrProcess {
 			detailOnOtherLocator.setAD_Org_ID(faScan.getAD_Org_ID());
 			detailOnOtherLocator.setTH_FA_Scan_ID(faScan.getTH_FA_Scan_ID());
 			detailOnOtherLocator.setA_Asset_ID(scanWarehouse.getA_Asset_ID());
-			detailOnOtherLocator.setM_Locator_ID(scanWarehouse.getM_Locator_ID());
+			detailOnOtherLocator.setM_Locator_ID(scanWarehouse.getA_Asset().getM_Locator_ID());
 			detailOnOtherLocator.setTH_FA_Scan_Location_ID(scanWarehouse.getM_Locator_ID());
 			detailOnOtherLocator.setTH_FA_ScanQty(scanWarehouse.getQty());
 			detailOnOtherLocator.setScanDate(Timestamp.valueOf(LocalDateTime.now()));

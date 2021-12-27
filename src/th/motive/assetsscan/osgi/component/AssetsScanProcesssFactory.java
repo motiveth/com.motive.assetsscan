@@ -6,6 +6,7 @@ import org.osgi.service.component.annotations.Component;
 
 import th.motive.assetsscan.process.AssetBookingScan;
 import th.motive.assetsscan.process.AssetConciliationScan;
+import th.motive.assetsscan.process.AssetLocatorCorrectByScan;
 
 @Component(
 		 property= {"service.ranking:Integer=2"}
@@ -18,6 +19,9 @@ public class AssetsScanProcesssFactory implements IProcessFactory {
 			return new AssetBookingScan();
 		else if (className.equalsIgnoreCase("AssetConciliationScan"))
 			return new AssetConciliationScan();
+		else if (className.equalsIgnoreCase("AssetLocatorCorrectByScan")) {
+			return new AssetLocatorCorrectByScan();
+		}
 		return null;
 	}
 
