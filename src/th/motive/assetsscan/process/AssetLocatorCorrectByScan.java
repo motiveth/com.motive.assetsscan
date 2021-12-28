@@ -32,6 +32,7 @@ public class AssetLocatorCorrectByScan extends SvrProcess{
 		for (X_TH_FA_Scan_Detail scanDetail : scanDetails) {
 			X_A_Asset asset = (X_A_Asset)scanDetail.getA_Asset();
 			asset.setM_Locator_ID(scanDetail.getTH_FA_Scan_Location_ID());
+			asset.setAD_Org_ID(scanDetail.getTH_FA_Scan_Org_ID());
 			asset.saveEx(get_TrxName());
 			
 			addLog(0, null, null, 

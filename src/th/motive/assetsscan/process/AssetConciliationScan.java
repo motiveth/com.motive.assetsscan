@@ -55,6 +55,7 @@ public class AssetConciliationScan extends SvrProcess {
 					scanDetail.setTH_FA_Physical_Status(X_TH_FA_Scan_Detail.TH_FA_PHYSICAL_STATUS_KeepInAnotherLocation);
 					scanDetail.setTH_FA_ScanQty(scanWarehouse.getQty());
 					scanDetail.setTH_FA_Scan_Location_ID(scanWarehouse.getM_Locator_ID());
+					scanDetail.setTH_FA_Scan_Org_ID(scanWarehouse.getAD_Org_ID());
 				}
 			}else {
 				scanDetail.setTH_FA_Physical_Status(X_TH_FA_Scan_Detail.TH_FA_PHYSICAL_STATUS_Normal);

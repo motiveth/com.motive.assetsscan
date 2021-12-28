@@ -34,7 +34,7 @@ public class X_TH_FA_Scan_Detail extends PO implements I_TH_FA_Scan_Detail, I_Pe
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20211011L;
+	private static final long serialVersionUID = 20211228L;
 
     /** Standard Constructor */
     public X_TH_FA_Scan_Detail (Properties ctx, int TH_FA_Scan_Detail_ID, String trxName)
@@ -71,7 +71,7 @@ public class X_TH_FA_Scan_Detail extends PO implements I_TH_FA_Scan_Detail, I_Pe
     public String toString()
     {
       StringBuilder sb = new StringBuilder ("X_TH_FA_Scan_Detail[")
-        .append(get_ID()).append("]");
+        .append(get_ID()).append(",Name=").append(getName()).append("]");
       return sb.toString();
     }
 
@@ -103,6 +103,51 @@ public class X_TH_FA_Scan_Detail extends PO implements I_TH_FA_Scan_Detail, I_Pe
 		return ii.intValue();
 	}
 
+	public org.compiere.model.I_C_BPartner getC_BPartner() throws RuntimeException
+    {
+		return (org.compiere.model.I_C_BPartner)MTable.get(getCtx(), org.compiere.model.I_C_BPartner.Table_Name)
+			.getPO(getC_BPartner_ID(), get_TrxName());	}
+
+	/** Set Business Partner .
+		@param C_BPartner_ID 
+		Identifies a Business Partner
+	  */
+	public void setC_BPartner_ID (int C_BPartner_ID)
+	{
+		if (C_BPartner_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_C_BPartner_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_C_BPartner_ID, Integer.valueOf(C_BPartner_ID));
+	}
+
+	/** Get Business Partner .
+		@return Identifies a Business Partner
+	  */
+	public int getC_BPartner_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_BPartner_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	/** Set Description.
+		@param Description 
+		Optional short description of the record
+	  */
+	public void setDescription (String Description)
+	{
+		set_Value (COLUMNNAME_Description, Description);
+	}
+
+	/** Get Description.
+		@return Optional short description of the record
+	  */
+	public String getDescription () 
+	{
+		return (String)get_Value(COLUMNNAME_Description);
+	}
+
 	public I_M_Locator getM_Locator() throws RuntimeException
     {
 		return (I_M_Locator)MTable.get(getCtx(), I_M_Locator.Table_Name)
@@ -131,6 +176,23 @@ public class X_TH_FA_Scan_Detail extends PO implements I_TH_FA_Scan_Detail, I_Pe
 		return ii.intValue();
 	}
 
+	/** Set Name.
+		@param Name 
+		Alphanumeric identifier of the entity
+	  */
+	public void setName (String Name)
+	{
+		set_Value (COLUMNNAME_Name, Name);
+	}
+
+	/** Get Name.
+		@return Alphanumeric identifier of the entity
+	  */
+	public String getName () 
+	{
+		return (String)get_Value(COLUMNNAME_Name);
+	}
+
 	/** Set Scan Date .
 		@param ScanDate Scan Date 	  */
 	public void setScanDate (Timestamp ScanDate)
@@ -143,6 +205,23 @@ public class X_TH_FA_Scan_Detail extends PO implements I_TH_FA_Scan_Detail, I_Pe
 	public Timestamp getScanDate () 
 	{
 		return (Timestamp)get_Value(COLUMNNAME_ScanDate);
+	}
+
+	/** Set Serial No.
+		@param SerNo 
+		Product Serial Number 
+	  */
+	public void setSerNo (String SerNo)
+	{
+		set_ValueNoCheck (COLUMNNAME_SerNo, SerNo);
+	}
+
+	/** Get Serial No.
+		@return Product Serial Number 
+	  */
+	public String getSerNo () 
+	{
+		return (String)get_Value(COLUMNNAME_SerNo);
 	}
 
 	/** Missing = Missing */
@@ -275,5 +354,42 @@ public class X_TH_FA_Scan_Detail extends PO implements I_TH_FA_Scan_Detail, I_Pe
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
+	}
+
+	/** Set Scan Org.
+		@param TH_FA_Scan_Org_ID Scan Org	  */
+	public void setTH_FA_Scan_Org_ID (int TH_FA_Scan_Org_ID)
+	{
+		if (TH_FA_Scan_Org_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_TH_FA_Scan_Org_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_TH_FA_Scan_Org_ID, Integer.valueOf(TH_FA_Scan_Org_ID));
+	}
+
+	/** Get Scan Org.
+		@return Scan Org	  */
+	public int getTH_FA_Scan_Org_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_TH_FA_Scan_Org_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	/** Set Search Key.
+		@param Value 
+		Search key for the record in the format required - must be unique
+	  */
+	public void setValue (String Value)
+	{
+		set_Value (COLUMNNAME_Value, Value);
+	}
+
+	/** Get Search Key.
+		@return Search key for the record in the format required - must be unique
+	  */
+	public String getValue () 
+	{
+		return (String)get_Value(COLUMNNAME_Value);
 	}
 }
