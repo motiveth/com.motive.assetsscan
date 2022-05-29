@@ -282,14 +282,16 @@ public class AssetWarehouseScanForm extends ADForm{
 			scanWarehouse.setTH_FA_Scan_ID(faScan.getTH_FA_Scan_ID());
 			scanWarehouse.setAD_Org_ID(orgId);
 			scanWarehouse.setM_Locator_ID(locatorId);
-			scanWarehouse.setQty(BigDecimal.ZERO);
+			scanWarehouse.setQty(BigDecimal.ONE);
 			scanWarehouse.setA_Asset_ID(inputAsset.getA_Asset_ID());
+			scanWarehouse.saveEx();
+			lbQty.setText(String.valueOf(scanWarehouse.getQty().intValue()));
+		}else {
+			lbQty.setText(String.valueOf(
+					Msg.translate(Env.getCtx(), "ASSETSCAN_READYSCAN")));
 		}
 
-		scanWarehouse.setQty(scanWarehouse.getQty().add(BigDecimal.ONE));
-		scanWarehouse.saveEx();
-
-		lbQty.setText(String.valueOf(scanWarehouse.getQty().intValue()));
+		//scanWarehouse.setQty(scanWarehouse.getQty().add(BigDecimal.ONE));
 		txtBarcode.setText(null);
 		txtBarcode.focus();
 
